@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 app.on('ready', () => {
     console.log('Running');
@@ -11,4 +11,15 @@ app.on('ready', () => {
 
 app.on('window-all-closed', () => {
     app.quit();
+});
+
+let sobreWindow = null;
+ipcMain.on('abrir-janela-sobre', () => {
+    if (sobreWindow == null) {
+        let sobreWindow = new BrowserWindow({
+            width: 300,
+            height: 200
+        });
+    }
+    sobreWindow.loadURL(`file://${__dirname}/app/sobre.html`);
 });
