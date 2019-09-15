@@ -16,10 +16,12 @@ app.on('window-all-closed', () => {
 let sobreWindow = null;
 ipcMain.on('abrir-janela-sobre', () => {
     if (sobreWindow == null) {
-        let sobreWindow = new BrowserWindow({
+        sobreWindow = new BrowserWindow({
             width: 300,
             height: 200
         });
+        sobreWindow.on('closed', () => sobreWindow = null);
     }
+
     sobreWindow.loadURL(`file://${__dirname}/app/sobre.html`);
 });
