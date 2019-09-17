@@ -17,11 +17,16 @@ let sobreWindow = null;
 ipcMain.on('abrir-janela-sobre', () => {
     if (sobreWindow == null) {
         sobreWindow = new BrowserWindow({
+            alwaysOnTop: true,
+            frame: false,
             width: 300,
             height: 200
         });
         sobreWindow.on('closed', () => sobreWindow = null);
     }
-
     sobreWindow.loadURL(`file://${__dirname}/app/sobre.html`);
+});
+
+ipcMain.on('fechar-janela-sobre', () => {
+    sobreWindow.close();
 });
