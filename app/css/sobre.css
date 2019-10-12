@@ -1,7 +1,4 @@
-body{
-    background-color: white;
-}
-.container {
+.container{
     text-align: center;
 }
 
@@ -9,6 +6,6 @@ body{
     margin: 5px 0;
 }
 
-.container img {
+.container img{
     width: 50px;
 }
